@@ -1,31 +1,20 @@
 const main = async () => {
-  const dogeFactory = await hre.ethers.getContractFactory('DogeCoin')
-  const dogeContract = await dogeFactory.deploy()
-  await dogeContract.deployed()
-  console.log('Dogecoin deployed to:', dogeContract.address)
+  const transactionsFactory = await hre.ethers.getContractFactory("Transactions");
+  const transactionsContract = await transactionsFactory.deploy();
 
-  const linkFactory = await hre.ethers.getContractFactory('Link')
-  const linkContract = await linkFactory.deploy()
-  await linkContract.deployed()
-  console.log('LinkToken deployed to:', linkContract.address)
+  await transactionsContract.deployed();
 
-  const daiFactory = await hre.ethers.getContractFactory('Dai')
-  const daiContract = await daiFactory.deploy()
-  await daiContract.deployed()
-  console.log('DaiToken deployed to:', daiContract.address)
+  console.log("Transactions address: ", transactionsContract.address);
+};
 
-  const usdcFactory = await hre.ethers.getContractFactory('Usdc')
-  const usdcContract = await usdcFactory.deploy()
-  await usdcContract.deployed()
-  console.log('UsdcToken deployed to:', usdcContract.address)
-}
-
-;(async () => {
+const runMain = async () => {
   try {
-    await main()
-    process.exit(0)
+    await main();
+    process.exit(0);
   } catch (error) {
-    console.error(error)
-    process.exit(1)
+    console.error(error);
+    process.exit(1);
   }
-})()
+};
+
+runMain();
